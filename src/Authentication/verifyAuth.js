@@ -6,7 +6,6 @@ module.exports = async (req, res, next) => {
   // get cookies from the request
 
   // verify the validity of the access token
-  console.log(req.cookies);
   try {
     const checkValidity = jwt.verify(req.cookies.accessToken, publicKey, {
       algorithm: "RS256",
