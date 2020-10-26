@@ -4,7 +4,6 @@ const publicKey = fs.readFileSync("public.key");
 
 module.exports = async (req, res, next) => {
   // get cookies from the request
-  // const cookies = cookie.parse(req.headers.cookie || "");
 
   // verify the validity of the access token
   console.log(req.cookies);
@@ -16,7 +15,6 @@ module.exports = async (req, res, next) => {
     if (checkValidity) {
       req.user = jwt.decode(req.cookies.accessToken);
       next();
-      return;
     }
   } catch (err) {
     res.sendStatus(401);
