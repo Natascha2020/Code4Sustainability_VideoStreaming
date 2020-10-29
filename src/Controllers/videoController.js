@@ -5,7 +5,6 @@ const path = require("path");
 const videoController = {
   videoStream: async (req, res) => {
     const id = req.query.currentUser ? req.user.idUser : req.params.id;
-    console.log(req.user);
 
     try {
       // better to create an absolute path to a video asset folder
@@ -47,10 +46,8 @@ const videoController = {
   },
 
   videoUpload: async (req, res) => {
-    console.log(req.user);
     const id = req.user.idUser;
     // check the integrity of the body
-    console.log(id);
 
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No files were uploaded.");
@@ -59,7 +56,6 @@ const videoController = {
     try {
       // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
       let videoUpload = req.files.videoUpload;
-
       let videoName = videoUpload.name;
 
       // Use the mv() method to place the file somewhere on your server
