@@ -3,8 +3,6 @@ const fs = require("fs");
 const publicKey = fs.readFileSync("public.key");
 
 module.exports = async (req, res, next) => {
-  // get cookies from the request
-  console.log(res.cookies);
   // verify the validity of the access token
   try {
     const checkValidity = jwt.verify(req.cookies.accessToken, publicKey, {

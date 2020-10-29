@@ -8,6 +8,6 @@ const verifyAuth = require("../Authentication/verifyAuth");
 router.post("/videoUpload", verifyAuth, videoController.videoUpload);
 
 // video stream
-router.get("/:id?", videoController.videoStream);
+router.get("/:id?", verifyAuth, videoController.videoStream);
 
 module.exports = router;
